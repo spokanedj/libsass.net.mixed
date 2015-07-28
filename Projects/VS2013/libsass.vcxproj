@@ -1,0 +1,306 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="GitVersion;Main" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <SASSC_VERSION>[NA]</SASSC_VERSION>
+    <LIBSASS_VERSION>[NA]</LIBSASS_VERSION>
+  </PropertyGroup>
+  <Target Name="GitVersion">
+    <Exec Command="git -C .. describe --abbrev=4 --dirty --always --tags &gt; libsass-version" />
+    <Exec Command="git -C ../sassc describe --abbrev=4 --dirty --always --tags &gt; sassc-version" />
+    <ReadLinesFromFile File="sassc-version">
+      <Output TaskParameter="Lines" PropertyName="SASSC_VERSION" />
+    </ReadLinesFromFile>
+    <ReadLinesFromFile File="libsass-version">
+      <Output TaskParameter="Lines" PropertyName="LIBSASS_VERSION" />
+    </ReadLinesFromFile>
+  </Target>
+  <Target Name="VersionMacros">
+    <ItemGroup>
+      <ClCompile>
+        <PreprocessorDefinitions>%(PreprocessorDefinitions);SASSC_VERSION="$(SASSC_VERSION)"</PreprocessorDefinitions>
+      </ClCompile>
+      <ClCompile>
+        <PreprocessorDefinitions>%(PreprocessorDefinitions);LIBSASS_VERSION="$(LIBSASS_VERSION)"</PreprocessorDefinitions>
+      </ClCompile>
+    </ItemGroup>
+  </Target>
+  <Target Name="Main">
+    <Message Text="sassc: $(SASSC_VERSION)" />
+    <Message Text="libsass: $(LIBSASS_VERSION)" />
+    <CallTarget Targets="VersionMacros" />
+    <CallTarget Targets="Build" />
+  </Target>
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\libsass\src\ast.cpp" />
+    <ClCompile Include="..\..\libsass\src\base64vlq.cpp" />
+    <ClCompile Include="..\..\libsass\src\bind.cpp" />
+    <ClCompile Include="..\..\libsass\src\cencode.c" />
+    <ClCompile Include="..\..\libsass\src\color_maps.cpp" />
+    <ClCompile Include="..\..\libsass\src\constants.cpp" />
+    <ClCompile Include="..\..\libsass\src\context.cpp" />
+    <ClCompile Include="..\..\libsass\src\cssize.cpp" />
+    <ClCompile Include="..\..\libsass\src\emitter.cpp" />
+    <ClCompile Include="..\..\libsass\src\environment.cpp" />
+    <ClCompile Include="..\..\libsass\src\error_handling.cpp" />
+    <ClCompile Include="..\..\libsass\src\eval.cpp" />
+    <ClCompile Include="..\..\libsass\src\expand.cpp" />
+    <ClCompile Include="..\..\libsass\src\extend.cpp" />
+    <ClCompile Include="..\..\libsass\src\file.cpp" />
+    <ClCompile Include="..\..\libsass\src\functions.cpp" />
+    <ClCompile Include="..\..\libsass\src\inspect.cpp" />
+    <ClCompile Include="..\..\libsass\src\json.cpp" />
+    <ClCompile Include="..\..\libsass\src\lexer.cpp" />
+    <ClCompile Include="..\..\libsass\src\listize.cpp" />
+    <ClCompile Include="..\..\libsass\src\memory_manager.cpp" />
+    <ClCompile Include="..\..\libsass\src\node.cpp" />
+    <ClCompile Include="..\..\libsass\src\output.cpp" />
+    <ClCompile Include="..\..\libsass\src\parser.cpp" />
+    <ClCompile Include="..\..\libsass\src\plugins.cpp" />
+    <ClCompile Include="..\..\libsass\src\position.cpp" />
+    <ClCompile Include="..\..\libsass\src\prelexer.cpp" />
+    <ClCompile Include="..\..\libsass\src\remove_placeholders.cpp" />
+    <ClCompile Include="..\..\libsass\src\sass.cpp" />
+    <ClCompile Include="..\..\libsass\src\sass2scss.cpp" />
+    <ClCompile Include="..\..\libsass\src\sass_context.cpp" />
+    <ClCompile Include="..\..\libsass\src\sass_functions.cpp" />
+    <ClCompile Include="..\..\libsass\src\sass_interface.cpp" />
+    <ClCompile Include="..\..\libsass\src\sass_util.cpp" />
+    <ClCompile Include="..\..\libsass\src\sass_values.cpp" />
+    <ClCompile Include="..\..\libsass\src\source_map.cpp" />
+    <ClCompile Include="..\..\libsass\src\to_c.cpp" />
+    <ClCompile Include="..\..\libsass\src\to_string.cpp" />
+    <ClCompile Include="..\..\libsass\src\to_value.cpp" />
+    <ClCompile Include="..\..\libsass\src\units.cpp" />
+    <ClCompile Include="..\..\libsass\src\utf8_string.cpp" />
+    <ClCompile Include="..\..\libsass\src\util.cpp" />
+    <ClCompile Include="..\..\libsass\src\values.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\libsass\src\ast.hpp" />
+    <ClInclude Include="..\..\libsass\src\ast_def_macros.hpp" />
+    <ClInclude Include="..\..\libsass\src\ast_factory.hpp" />
+    <ClInclude Include="..\..\libsass\src\ast_fwd_decl.hpp" />
+    <ClInclude Include="..\..\libsass\src\backtrace.hpp" />
+    <ClInclude Include="..\..\libsass\src\base64vlq.hpp" />
+    <ClInclude Include="..\..\libsass\src\bind.hpp" />
+    <ClInclude Include="..\..\libsass\src\color_maps.hpp" />
+    <ClInclude Include="..\..\libsass\src\constants.hpp" />
+    <ClInclude Include="..\..\libsass\src\context.hpp" />
+    <ClInclude Include="..\..\libsass\src\cssize.hpp" />
+    <ClInclude Include="..\..\libsass\src\debug.hpp" />
+    <ClInclude Include="..\..\libsass\src\debugger.hpp" />
+    <ClInclude Include="..\..\libsass\src\emitter.hpp" />
+    <ClInclude Include="..\..\libsass\src\environment.hpp" />
+    <ClInclude Include="..\..\libsass\src\error_handling.hpp" />
+    <ClInclude Include="..\..\libsass\src\eval.hpp" />
+    <ClInclude Include="..\..\libsass\src\expand.hpp" />
+    <ClInclude Include="..\..\libsass\src\extend.hpp" />
+    <ClInclude Include="..\..\libsass\src\file.hpp" />
+    <ClInclude Include="..\..\libsass\src\functions.hpp" />
+    <ClInclude Include="..\..\libsass\src\inspect.hpp" />
+    <ClInclude Include="..\..\libsass\src\json.hpp" />
+    <ClInclude Include="..\..\libsass\src\kwd_arg_macros.hpp" />
+    <ClInclude Include="..\..\libsass\src\lexer.hpp" />
+    <ClInclude Include="..\..\libsass\src\listize.hpp" />
+    <ClInclude Include="..\..\libsass\src\mapping.hpp" />
+    <ClInclude Include="..\..\libsass\src\memory_manager.hpp" />
+    <ClInclude Include="..\..\libsass\src\node.hpp" />
+    <ClInclude Include="..\..\libsass\src\operation.hpp" />
+    <ClInclude Include="..\..\libsass\src\output.hpp" />
+    <ClInclude Include="..\..\libsass\src\parser.hpp" />
+    <ClInclude Include="..\..\libsass\src\paths.hpp" />
+    <ClInclude Include="..\..\libsass\src\plugins.hpp" />
+    <ClInclude Include="..\..\libsass\src\position.hpp" />
+    <ClInclude Include="..\..\libsass\src\prelexer.hpp" />
+    <ClInclude Include="..\..\libsass\src\remove_placeholders.hpp" />
+    <ClInclude Include="..\..\libsass\src\sass_util.hpp" />
+    <ClInclude Include="..\..\libsass\src\source_map.hpp" />
+    <ClInclude Include="..\..\libsass\src\subset_map.hpp" />
+    <ClInclude Include="..\..\libsass\src\to_c.hpp" />
+    <ClInclude Include="..\..\libsass\src\to_string.hpp" />
+    <ClInclude Include="..\..\libsass\src\to_value.hpp" />
+    <ClInclude Include="..\..\libsass\src\units.hpp" />
+    <ClInclude Include="..\..\libsass\src\utf8.h" />
+    <ClInclude Include="..\..\libsass\src\utf8_string.hpp" />
+    <ClInclude Include="..\..\libsass\src\util.hpp" />
+    <ClInclude Include="..\..\libsass\src\values.hpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\libsass\src\GNUmakefile.am" />
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{E4030474-AFC9-4CC6-BEB6-D846F631502B}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>libsass</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v120</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v120</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v120</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v120</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+    <TargetName>libsass.$(PlatformTarget)</TargetName>
+    <OutDir>$(SolutionDir)$(ProjectName\$(Configuration)\$(PlatformTarget)\</OutDir>
+    <IntDir>$(SolutionDir)$(ProjectName\$(Configuration)\$(PlatformTarget)\obj\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <LinkIncremental>true</LinkIncremental>
+    <TargetName>libsass.$(PlatformTarget)</TargetName>
+    <OutDir>$(SolutionDir)..\..\$(ProjectName)\$(Configuration)\$(PlatformTarget)\</OutDir>
+    <IntDir>$(SolutionDir)..\..\$(ProjectName)\$(Configuration)\$(PlatformTarget)\obj\</IntDir>
+    <TargetExt>.lib</TargetExt>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+    <TargetName>libsass.$(PlatformTarget)</TargetName>
+    <OutDir>$(SolutionDir)..\..\$(ProjectName)\$(Configuration)\$(PlatformTarget)\</OutDir>
+    <IntDir>$(SolutionDir)..\..\$(ProjectName)\$(Configuration)\$(PlatformTarget)\obj\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <LinkIncremental>false</LinkIncremental>
+    <TargetName>libsass.$(PlatformTarget)</TargetName>
+    <OutDir>$(SolutionDir)..\..\$(ProjectName)\$(Configuration)\$(PlatformTarget)\</OutDir>
+    <IntDir>$(SolutionDir)..\..\$(ProjectName)\$(Configuration)\$(PlatformTarget)\obj\</IntDir>
+    <TargetExt>.lib</TargetExt>
+  </PropertyGroup>
+  <ItemDefinitionGroup>
+    <ClCompile>
+      <AdditionalIncludeDirectories>$(SolutionDir)..\..\$(ProjectName)\include;$(SolutionDir)..\..\$(ProjectName)\src\posix;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ExceptionHandling>SyncCThrow</ExceptionHandling>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ExceptionHandling>SyncCThrow</ExceptionHandling>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+    <Lib>
+      <OutputFile>$(SolutionDir)..\..\$(Configuration)\$(PlatformTarget)\libsass$(PlatformTarget).lib</OutputFile>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ExceptionHandling>SyncCThrow</ExceptionHandling>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ExceptionHandling>SyncCThrow</ExceptionHandling>
+      <DebugInformationFormat>None</DebugInformationFormat>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+    <Lib>
+      <OutputFile>$(SolutionDir)..\..\$(ProjectName)\$(Configuration)\$(PlatformTarget)\libsass.$(PlatformTarget).lib</OutputFile>
+    </Lib>
+  </ItemDefinitionGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
