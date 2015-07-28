@@ -15,73 +15,75 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="resource.h">
+    <ClInclude Include="..\..\libsass.net.mixed\callback_manager.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="callback_manager.hpp">
+    <ClInclude Include="..\..\libsass.net.mixed\CallbackMarshaller.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="CallbackMarshaller.hpp">
+    <ClInclude Include="..\..\libsass.net.mixed\CompileFileResult.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="CompileFileResult.hpp">
+    <ClInclude Include="..\..\libsass.net.mixed\ISassCompiler.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="ISassCompiler.hpp">
+    <ClInclude Include="..\..\libsass.net.mixed\ISassInterface.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="ISassInterface.hpp">
+    <ClInclude Include="..\..\libsass.net.mixed\ISassToScssConverter.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="ISassToScssConverter.hpp">
+    <ClInclude Include="..\..\libsass.net.mixed\OutputStyle.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="OutputStyle.hpp">
+    <ClInclude Include="..\..\libsass.net.mixed\resource.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="SassCompiler.hpp">
+    <ClInclude Include="..\..\libsass.net.mixed\SassCompiler.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="SassCompilerException.hpp">
+    <ClInclude Include="..\..\libsass.net.mixed\SassCompilerException.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="SassInterface.hpp">
+    <ClInclude Include="..\..\libsass.net.mixed\SassInterface.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="SassOptions.hpp">
+    <ClInclude Include="..\..\libsass.net.mixed\SassOptions.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="SassToScssConverter.hpp">
+    <ClInclude Include="..\..\libsass.net.mixed\SassToScssConverter.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="StringToANSI.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="CompilerHelper.hpp">
+    <ClInclude Include="..\..\libsass.net.mixed\StringToANSI.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="AssemblyInfo.cpp">
+    <ClCompile Include="..\..\libsass.net.mixed\StringToANSI.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="callback_manager.cpp">
+    <ClCompile Include="..\..\libsass.net.mixed\SassToScssConverter.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="CallbackMarshaller.cpp">
+    <ClCompile Include="..\..\libsass.net.mixed\SassInterface.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="SassCompiler.cpp">
+    <ClCompile Include="..\..\libsass.net.mixed\SassCompiler.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="SassInterface.cpp">
+    <ClCompile Include="..\..\libsass.net.mixed\CallbackMarshaller.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="SassToScssConverter.cpp">
+    <ClCompile Include="..\..\libsass.net.mixed\callback_manager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="StringToANSI.cpp">
+    <ClCompile Include="..\..\libsass.net.mixed\AssemblyInfo.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Manifest Include="..\..\libsass.net.mixed\libsass.net.mixed.dll.manifest">
+      <Filter>Resource Files</Filter>
+    </Manifest>
   </ItemGroup>
 </Project>
