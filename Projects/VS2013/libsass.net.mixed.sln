@@ -6,6 +6,9 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "libsass", "libsass.vcxproj", "{E4030474-AFC9-4CC6-BEB6-D846F631502B}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "libsass.net.mixed", "libsass.net.mixed.vcxproj", "{C3B01408-8A57-446F-9B76-FD8CD6F2155E}"
+	ProjectSection(ProjectDependencies) = postProject
+		{E4030474-AFC9-4CC6-BEB6-D846F631502B} = {E4030474-AFC9-4CC6-BEB6-D846F631502B}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "libsass.net.test", "..\..\libsass.net.tests\libsass.net.test.csproj", "{E14C5AAC-AEF2-454D-A39A-FBB0D16E5815}"
 EndProject

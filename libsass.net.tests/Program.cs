@@ -9,8 +9,15 @@ namespace libsasstest
 {
     class Program
     {
+        static string OutputDir = "test_output";
+
         static void Main(string[] args)
         {
+            if ( !Directory.Exists(OutputDir) )
+            {
+                Directory.CreateDirectory(OutputDir);
+            }
+
             List<int> jobList = new List<int> { 1 };//, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30 };
 
             var sw = new Stopwatch();
@@ -38,7 +45,7 @@ namespace libsasstest
                 //var result = compiler.CompileFile(Path.Combine(srcpath, @"..\..\bootstrap.scss"), includeSourceComments: false );
                 var result = compiler.CompileFile(@"default.scss");
 
-                File.WriteAllText(String.Format(@"test_output\foundation-libsass{0}.css", jobID), result.CSS);
+                File.WriteAllText(String.Format(@"{0}\foundation-libsass{1}.css", OutputDir, jobID), result.CSS);
             }
 
             sw.Stop();
