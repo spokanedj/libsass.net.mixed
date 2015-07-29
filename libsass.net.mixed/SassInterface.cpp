@@ -91,6 +91,7 @@ int DoCompileFile(
 	Sass_Output_Style	outputStyle,
 	bool				inclSrcComments,
 	int					precision,
+	bool				embedMap,
 	// Out
 	int*				errStatus,
 	std::string&		errMessage,
@@ -113,6 +114,7 @@ int DoCompileFile(
 		sass_option_set_include_path(options, includePaths.c_str());
 		sass_option_set_omit_source_map_url(options, mapFile.empty());
 		sass_option_set_source_map_file(options, mapFile.c_str());
+		sass_option_set_source_map_embed(options, (!mapFile.empty() && embedMap));
 
 		sass_compile_file_context(ctx);
 
@@ -226,6 +228,7 @@ namespace LibSassNet
 				GetOutputStyle(sassFileContext->Options->OutputStyle),
 				sassFileContext->Options->IncludeSourceComments ? true : false,
 				sassFileContext->Options->Precision,
+				sassFileContext->Options->EmbeddedMap,
 				// Out
 				&errStatus,
 				errMessage,

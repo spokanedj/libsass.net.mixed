@@ -41,7 +41,7 @@ namespace LibSassNet
 		return context->OutputString;
 	}
 
-	CompileFileResult^ SassCompiler::CompileFile(System::String^ inputPath, OutputStyle outputStyle, System::String^ sourceMapPath, bool includeSourceComments, int precision, IEnumerable<System::String^>^ additionalIncludePaths)
+	CompileFileResult^ SassCompiler::CompileFile(System::String^ inputPath, OutputStyle outputStyle, System::String^ sourceMapPath, bool includeSourceComments, int precision, bool embedMap, IEnumerable<System::String^>^ additionalIncludePaths)
 	{
 
 		String^ directoryName = Path::GetDirectoryName(inputPath);
@@ -59,6 +59,7 @@ namespace LibSassNet
 		Options->IncludeSourceComments = includeSourceComments;
 		Options->IncludePaths = String::Join(";", includePaths);
 		Options->Precision = precision;
+		Options->EmbeddedMap = embedMap;
 
 		SassFileContext^ context = gcnew SassFileContext();
 		// libsass 3.0 expects utf8 path string, but strings in .NET are utf16, so we need to convert it

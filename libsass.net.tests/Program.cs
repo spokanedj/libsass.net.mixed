@@ -43,7 +43,7 @@ namespace libsasstest
             {
 
                 //var result = compiler.CompileFile(Path.Combine(srcpath, @"..\..\bootstrap.scss"), includeSourceComments: false );
-                var result = compiler.CompileFile(@"default.scss");
+                var result = compiler.CompileFile(@"default.scss", OutputStyle.Nested, "http://winfly/", false, 5, true, null);
 
                 File.WriteAllText(String.Format(@"{0}\foundation-libsass{1}.css", OutputDir, jobID), result.CSS);
             }

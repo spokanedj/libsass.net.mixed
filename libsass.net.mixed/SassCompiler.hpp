@@ -28,9 +28,9 @@ namespace LibSassNet
 			OutputStyle outputStyle,
 			System::String^ sourceMapPath,
 			bool includeSourceComments) {
-			return CompileFile(inputPath, outputStyle, sourceMapPath, includeSourceComments, 5, nullptr);
+			return CompileFile(inputPath, outputStyle, sourceMapPath, includeSourceComments, 5, false, nullptr);
 		}
-		virtual CompileFileResult^ CompileFile(System::String^ inputPath, OutputStyle outputStyle, System::String^ sourceMapPath, bool includeSourceComments, int precision, System::Collections::Generic::IEnumerable<System::String^>^ additionalIncludePaths);
+		virtual CompileFileResult^ CompileFile(System::String^ inputPath, OutputStyle outputStyle, System::String^ sourceMapPath, bool includeSourceComments, int precision, bool embedMap, System::Collections::Generic::IEnumerable<System::String^>^ additionalIncludePaths);
 
 	private:
 		/// <summary>

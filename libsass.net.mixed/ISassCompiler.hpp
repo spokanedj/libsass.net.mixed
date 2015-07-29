@@ -25,6 +25,7 @@ namespace LibSassNet
 												System::String^ sourceMapPath,
 												bool includeSourceComments,
 												int precision, 
+												bool embedMap,
 												System::Collections::Generic::IEnumerable<System::String^>^ additionalIncludePaths) = 0;
 	};
 }

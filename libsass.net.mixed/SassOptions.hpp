@@ -33,6 +33,7 @@ namespace LibSassNet
 			property bool IncludeSourceComments;
 			property int Precision;
 			property String^ IncludePaths;
+			property bool EmbeddedMap;
 	};
 
 	public ref class SassContext
